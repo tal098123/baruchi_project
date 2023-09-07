@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zoo App</title>
+</head>
+<body>
+    <h1>Welcome to the Zoo!</h1>
+    <h2>Add an Animal</h2>
+    <form method="POST" action="/add">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+        <label for="species">Species:</label>
+        <input type="text" id="species" name="species" required><br>
+        <input type="submit" value="Add">
+    </form>
+    <h2>Animals</h2>
+    <ul>
+        {% for animal in animals %}
+            <li>{{ animal.name }} ({{ animal.species }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
