@@ -51,7 +51,7 @@ resource "azurerm_network_security_group" "az_nsg_webapp" {
     protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "22"
-    source_address_prefix      = "2.54.36.236"
+    source_address_prefix      = "147.235.195.25"
     destination_address_prefix = "*"
 }
 }

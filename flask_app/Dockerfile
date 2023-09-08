@@ -6,7 +6,7 @@ WORKDIR /code/
 
 #
 COPY ./requirements.txt /code/requirements.txt
-CMD echo Hello Adi
+CMD echo Hello Tal
 CMD cat /code/requirements.txt
 
 
@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 #
 COPY ./ /code/
-CMD echo Hello Adi
+CMD echo Hello Tal
 
 
 
