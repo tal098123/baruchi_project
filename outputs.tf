@@ -1,5 +1,5 @@
 output "resource_group_name" {
-  value = var.rg_tr_westus
+  value = var.rg_tr_final
 }
 
 output "private_ip_db" {

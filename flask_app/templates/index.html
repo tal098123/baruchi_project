@@ -7,14 +7,15 @@
 <body>
     <h1>Welcome to the encryption server!</h1>
     <h2></h2>
+    <h2>here you can encode texts sent to you</h2>
     <form method="POST" action="/send_encoder">
         <label for="text to encrypt">text:</label>
         <input type="text" id="text" name="text" required><br>
-        <input type="submit" value="Add">
+        <input type="submit" value="send_encoder">
     </form>
     <h2>Encrypted texts</h2>
     <ul>
-        {% for Encrypted_text in Encrypted_text_db %}
+        {% for Encrypted_text in encrypted_texts %}
             <li>{{ Encrypted_text.text }}</li>
             <br>
         {% endfor %}
@@ -24,12 +25,12 @@
     <form method="POST" action="/send_decoder">
         <label for="encrypted text to decrypt">text:</label>
         <input type="text" id="encrypted_text" name="encrypted_text" required><br>
-        <input type="submit" value="Add">
+        <input type="submit" value="send_decoder">
     </form>
-    <h2>Encrypted texts</h2>
+    <h2>Decrypted texts</h2>
     <ul>
-        {% for Decrypted_text in Decrypted_text_db %}
-            <li>({{ Decrypted_text.text }})</li>
+        {% for Decrypted_text in decrypted_texts %}
+            <li>{{ Decrypted_text.text }}</li>
             <br>
         {% endfor %}
     </ul>

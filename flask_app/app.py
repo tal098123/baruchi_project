@@ -16,22 +16,22 @@ class Decrypted_text_db(db.Model):
 
 def encrypt(message):
     conversion_table = str.maketrans("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890אבגדהוזחטיכלמנסעפצקרשת",
-     "zyxwvuאבזחטיכ349לקרשתtsrqpo120nmlkjihgfedcbaZYמנסע56פצXWVUTSRQPONMLגדהוK78JIHרשGFEDCBA")
+     "דwTUVWbchijkגXYaZ12xyzABCDEqrstu678opMN90אביכלמנסעפצקvFGHdefgIJKLהוזחטlmnOP5רשQRS34ת")
     return message.translate(conversion_table)
 
 
 def decrypt(message):
-    conversion_table = str.maketrans("zyxwvuאבזחטיכ349לקרשתtsrqpo120nmlkjihgfedcbaZYמנסע56פצXWVUTSRQPONMLגדהוK78JIHרשGFEDCBA", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890אבגדהוזחטיכלמנסעפצקרשת")
+    conversion_table = str.maketrans("דwTUVWbchijkגXYaZ12xyzABCDEqrstu678opMN90אביכלמנסעפצקvFGHdefgIJKLהוזחטlmnOP5רשQRS34ת", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890אבגדהוזחטיכלמנסעפצקרשת")
     return message.translate(conversion_table)
   
 
 @app.route('/')
 def index():
-    Encrypted_text_db=Encrypted_text_db.query.all()
-    Decrypted_text_db=Decrypted_text_db.query.all()
-    return render_template('index.html', Encrypted_text_db=Encrypted_text_db, Decrypted_text_db=Decrypted_text_db)
+    encrypted_texts = Encrypted_text_db.query.order_by(Encrypted_text_db.id.desc()).all()
+    decrypted_texts = Decrypted_text_db.query.order_by(Decrypted_text_db.id.desc()).all()
+    return render_template('index.html', encrypted_texts=encrypted_texts, decrypted_texts=decrypted_texts)
 
-@app.route('/send_coder', methods=['POST'])
+@app.route('/send_encoder', methods=['POST'])
 def add_encrypted_text():
     
     encrypted_text = encrypt(str(request.form['text']))
