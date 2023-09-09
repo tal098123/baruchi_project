@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Zoo App</title>
+    <title>Encoder and Decoder</title>
 </head>
+<br>
 <body>
-    <h1>Welcome to the Zoo!</h1>
-    <h2>Add an Animal</h2>
-    <form method="POST" action="/add">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br>
-        <label for="species">Species:</label>
-        <input type="text" id="species" name="species" required><br>
+    <h1>Welcome to the encryption server!</h1>
+    <h2></h2>
+    <form method="POST" action="/send_encoder">
+        <label for="text to encrypt">text:</label>
+        <input type="text" id="text" name="text" required><br>
         <input type="submit" value="Add">
     </form>
-    <h2>Animals</h2>
+    <h2>Encrypted texts</h2>
     <ul>
-        {% for animal in animals %}
-            <li>{{ animal.name }} ({{ animal.species }})</li>
+        {% for Encrypted_text in Encrypted_text_db %}
+            <li>{{ Encrypted_text.text }}</li>
+            <br>
         {% endfor %}
     </ul>
+    <br>
+    <h2>here you decode texts sent to you</h2>
+    <form method="POST" action="/send_decoder">
+        <label for="encrypted text to decrypt">text:</label>
+        <input type="text" id="encrypted_text" name="encrypted_text" required><br>
+        <input type="submit" value="Add">
+    </form>
+    <h2>Encrypted texts</h2>
+    <ul>
+        {% for Decrypted_text in Decrypted_text_db %}
+            <li>({{ Decrypted_text.text }})</li>
+            <br>
+        {% endfor %}
+    </ul>
+
+
 </body>
 </html>

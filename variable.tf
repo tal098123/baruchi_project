@@ -1,15 +1,15 @@
 #create variable for the resource group
-variable "rg_tr_westus" {
+variable "rg_tr_final" {
   description = "Name of the Resource Group"
   type        = string
-  default     = "rg-tr-westus"
+  default     = "rg-tr-final"
 }
 
 #create variable for the virtual network
-variable "vnet_tr_westus" {
+variable "vnet_tr_final" {
   description = "Name of the Virtual Network"
   type        = string
-  default     = "vnet-tr-westus"
+  default     = "vnet-tr-final"
 }
 
 variable "admin_username" {
